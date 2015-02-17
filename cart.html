@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<style>
+			#display{
+				height: 250px;				
+				background-color:gray;
+			}
+			
+			#total{		
+				height: 50px;
+				background-color:lightgreen;
+			}
+		</style>
+		<script src="jquery-2.1.1.js"></script>
+		
+		<script>
+			var amt = 0;
+			$(document).ready(function(){
+               $("#add").click(changedSelect);
+			   $("#check").click(check);
+            });
+			
+			
+            function changedSelect(){
+			var x = document.getElementById("quantity").value;
+			var nApp = 20;
+			var nOrg = 10;
+			var nBan = 30;
+			
+			if($("#cart").val() == "Apple"){
+				$("#display").append(x + " " + $("#cart").val() + nApp * x + "</br>"); 
+				amt = amt + (nApp * x);
+			}
+			else if($("#cart").val() == "Orange"){
+				$("#display").append(x + " " + $("#cart").val() + nOrg * x  + "</br>"); 
+				amt = amt + (nOrg * x);
+			}	
+			else if($("#cart").val() == "Banana"){
+				$("#display").append(x + " " + $("#cart").val() + nBan * x + "</br>");
+				amt = amt + (nBan * x);
+            }
+			}
+			function check(){
+				$("#total").text("Total: " + amt);
+			}
+			
+			
+		</script>
+	</head>
+	
+	<body>
+	   <select id="cart">
+            <option value="Apple">Apple</option>
+            <option value="Orange">Orange</option>
+            <option value="Banana">Banana</option>
+        </select>
+        
+		<input type="text" id="quantity" style="width: 25px">
+		<button type="button" id="add">Add to Cart</button>
+		<button type="button" id="check">Check Out</button>
+		
+		<div id="cart1">
+		</div>
+		<div id="display">
+		</div>
+		<div id="total">
+		</div>
+	</body>
+</html>
